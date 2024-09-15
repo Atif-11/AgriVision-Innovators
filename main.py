@@ -64,8 +64,8 @@ RESOURCES = ["Water", "Fertilizers", "Machinery", "Labor", "Pesticides", "Electr
 
 # Sample user database (extend to use a real database for production)
 user_db = {
-    "user1": hashlib.sha256("password1".encode()).hexdigest(),
-    "user2": hashlib.sha256("password2".encode()).hexdigest()
+    "user1": hashlib.sha256("washingMachine".encode()).hexdigest(),
+    "user2": hashlib.sha256("ironStand".encode()).hexdigest()
 }
 
 # Function to hash the passwords
