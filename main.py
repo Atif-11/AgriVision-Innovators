@@ -13,19 +13,27 @@ load_dotenv()
 Together.api_key = os.getenv("TOGETHER_API_KEY")
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
-# Static Data: Crop Prices for both Pakistan and India
+# Static Data: Avrage Crop Prices for both Pakistan and India for last 5 years
 CROP_PRICES = {
     "Pakistan": {
         "Wheat": {"price": 1500, "unit": "PKR/40kg"},
         "Cotton": {"price": 4200, "unit": "PKR/40kg"},
         "Mustard": {"price": 3600, "unit": "PKR/40kg"},
-        "Sugarcane": {"price": 180, "unit": "PKR/40kg"}
+        "Sugarcane": {"price": 180, "unit": "PKR/40kg"},
+        "Rice": {"price": 2200, "unit": "PKR/40kg"},
+        "Maize": {"price": 1800, "unit": "PKR/40kg"},
+        "Chickpeas": {"price": 3000, "unit": "PKR/40kg"},
+        "Potatoes": {"price": 1200, "unit": "PKR/40kg"}
     },
     "India": {
         "Wheat": {"price": 2200, "unit": "INR/Quintal"},
         "Cotton": {"price": 6200, "unit": "INR/Quintal"},
         "Mustard": {"price": 5500, "unit": "INR/Quintal"},
-        "Sugarcane": {"price": 315, "unit": "INR/Quintal"}
+        "Sugarcane": {"price": 315, "unit": "INR/Quintal"},
+        "Rice": {"price": 2000, "unit": "INR/Quintal"},
+        "Maize": {"price": 1850, "unit": "INR/Quintal"},
+        "Soybeans": {"price": 4000, "unit": "INR/Quintal"},
+        "Turmeric": {"price": 7500, "unit": "INR/Quintal"}
     }
 }
 
@@ -170,7 +178,7 @@ def get_crop_recommendations(region, soil_type, season, return_expectation, inve
     client = Together(api_key=os.getenv("TOGETHER_API_KEY"))
     response = client.chat.completions.create(
         model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-        messages=[{"role": "user", "content": prompt}],
+        messages=[{"role": "system", "content": "You are an expert agricultural consultant with decades of experience in crop selection and farming strategies."}],
         max_tokens=1000,
         temperature=0.7,
         stream=False
