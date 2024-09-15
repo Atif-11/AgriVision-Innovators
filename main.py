@@ -178,7 +178,10 @@ def get_crop_recommendations(region, soil_type, season, return_expectation, inve
     client = Together(api_key=os.getenv("TOGETHER_API_KEY"))
     response = client.chat.completions.create(
         model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-        messages=[{"role": "system", "content": "You are an expert agricultural consultant with decades of experience in crop selection and farming strategies."}],
+        messages=[            
+            {"role": "system", "content": "You are an expert agricultural consultant with decades of experience in crop selection and farming strategies."},
+            {"role": "user", "content": prompt}
+            ],
         max_tokens=1000,
         temperature=0.7,
         stream=False
