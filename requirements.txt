@@ -1,0 +1,5 @@
+streamlit
+together
+mindsdb_sdk
+requests
+python-dotenv
