@@ -133,7 +133,7 @@ def main_app():
     soil_type = st.selectbox("Soil Type", SOIL_TYPES)
     season = st.selectbox("Time of the Year", ["Spring", "Summer", "Autumn", "Winter"])
     return_expectation = st.selectbox("Return Expectation", ["High", "Medium", "Low"])
-    investment_amount = st.slider("Investment Amount (in local currency)", 1000, 1000000, 100000)
+    investment_amount = st.slider("Investment Amount (in local currency)", 500000, 5000000)
     available_area = st.number_input("Available Area (in hectares)", min_value=0.1, max_value=1000.0, value=1.0)
     
     resources = st.multiselect("Available Resources", RESOURCES)
